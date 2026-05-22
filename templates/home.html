@@ -1,0 +1,157 @@
+{% extends "base.html" %} 
+{% block content %}
+
+
+
+    <!-- ================= HERO ================= -->
+    <div class="relative bg-gradient-to-r from-purple-400 to-purple-800 text-white mx-6 my-6 rounded-2xl overflow-hidden">
+
+        <div class="container mx-auto px-6 py-24 text-center">
+
+            <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                Welcome to Our Store
+            </h1>
+
+            <p class="text-lg md:text-xl mb-8 text-purple-100">
+                Discover amazing products at great prices
+            </p>
+
+            <button class="bg-white text-purple-700 px-8 py-3 rounded-xl font-semibold hover:bg-gray-100 transition shadow-lg">
+                Shop Now
+            </button>
+
+        </div>
+    </div>
+
+    <!-- ================= FEATURED PRODUCTS ================= -->
+    <div class="container mx-auto px-6 py-16">
+
+        <div class="flex justify-between items-center mb-10">
+            <h2 class="text-3xl font-bold">
+                Popular Products
+            </h2>
+
+            <button class="text-purple-600 font-medium hover:underline">
+                View All
+            </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Product Card -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition overflow-hidden">
+
+                <img src="https://via.placeholder.com/400x300"
+                     alt="Product"
+                     class="w-full h-64 object-cover">
+
+                <div class="p-5">
+
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-semibold">
+                            Product Name
+                        </h3>
+
+                        <span class="bg-purple-100 text-purple-700 text-xs px-2 py-1 rounded-full">
+                            New
+                        </span>
+                    </div>
+
+                    <p class="text-gray-500 text-sm mb-4">
+                        Premium quality product with amazing features.
+                    </p>
+
+                    <div class="flex justify-between items-center">
+
+                        <div>
+                            <p class="text-2xl font-bold text-purple-700">
+                                $49.99
+                            </p>
+                        </div>
+
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition">
+                            Add to Cart
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition overflow-hidden">
+
+                <img src="https://via.placeholder.com/400x300"
+                     alt="Product"
+                     class="w-full h-64 object-cover">
+
+                <div class="p-5">
+
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-semibold">
+                            Wireless Headset
+                        </h3>
+
+                        <span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
+                            Popular
+                        </span>
+                    </div>
+
+                    <p class="text-gray-500 text-sm mb-4">
+                        Crystal clear sound and long battery life.
+                    </p>
+
+                    <div class="flex justify-between items-center">
+
+                        <p class="text-2xl font-bold text-purple-700">
+                            $89.99
+                        </p>
+
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition">
+                            Add to Cart
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Card -->
+            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition overflow-hidden">
+
+                <img src="https://via.placeholder.com/400x300"
+                     alt="Product"
+                     class="w-full h-64 object-cover">
+
+                <div class="p-5">
+
+                    <div class="flex justify-between items-start mb-2">
+                        <h3 class="text-xl font-semibold">
+                            Smart Watch
+                        </h3>
+
+                        <span class="bg-yellow-100 text-yellow-700 text-xs px-2 py-1 rounded-full">
+                            Trending
+                        </span>
+                    </div>
+
+                    <p class="text-gray-500 text-sm mb-4">
+                        Track fitness, calls, notifications and more.
+                    </p>
+
+                    <div class="flex justify-between items-center">
+
+                        <p class="text-2xl font-bold text-purple-700">
+                            $129.99
+                        </p>
+
+                        <button class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition">
+                            Add to Cart
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
