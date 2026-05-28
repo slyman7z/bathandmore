@@ -1,88 +1,49 @@
-<nav class="bg-white shadow-sm sticky top-0 z-50">
+    <div class="site-navbar bg-white py-2">
 
-    <div class="container mx-auto px-6 py-4 flex items-center justify-between">
-
-        <!-- Logo -->
-        <div class="text-2xl font-bold text-purple-700">
-          <a href="/"> ShopVerse </a>
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="{% url 'search' %}" method="get">
+            <input type="text" class="form-control" name="q" placeholder="Search keyword and hit enter...">
+          </form>  
         </div>
+      </div>
 
-        <!-- Search + Category -->
-        <div class="hidden md:flex items-center gap-4 w-1/2">
-
-            <!-- Search -->
-            <div class="relative w-full">
-
-                <input type="text" placeholder="Search products..."
-                    class="w-full border border-gray-300 rounded-xl px-4 py-2 pl-10 focus:outline-none focus:ring-2 focus:ring-purple-500">
-
-                <!-- Search Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 absolute left-3 top-2.5 text-gray-400"
-                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
-
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M21 21l-4.35-4.35m1.85-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
+      <div class="container">
+        <div class="d-flex align-items-center justify-content-between">
+          <div class="logo">
+            <div class="site-logo">
+              <a href="index.html" class="js-logo-clone">ShopMax</a>
             </div>
-
-            <!-- Category Dropdown -->
-            <select onchange="window.location.href=this.value"
-                class="border border-gray-300 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-500">
-                <option value="{% url 'store' %}">
-                    All Categories
-                </option>
-
-                {% for category in links %}
-                <option value="{% url 'products_by_category' category.slug %}" {% if request.path == category.get_url %}selected{% endif %}>
-                    {{ category.category_name }}
-                </option>
-                {% endfor %}
-            </select>
+          </div>
+          <div class="main-nav d-none d-lg-block">
+            <nav class="site-navigation text-right text-md-center" role="navigation">
+              <ul class="site-menu js-clone-nav d-none d-lg-block">
+                <li class="has-children ">
+                  <a href="index.html">Categories</a>
+                  <ul class="dropdown">
+                    {% for category in links %}
+                    <li><a href="{% url 'products_by_category' category.slug %}">{{ category.category_name }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </li>
+                
+                <li class="active"><a href="{% url 'store'%}">Shop</a></li>
+                <li><a href="#">Catalogue</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="contact.html">Contact</a></li>
+              </ul>
+            </nav>
+          </div>
+          <div class="icons">
+            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+            <a href="#" class="icons-btn d-inline-block"><span class="icon-heart-o"></span></a>
+            <a href="{% url 'cart' %}" class="icons-btn d-inline-block bag">
+              <span class="icon-shopping-bag"></span>
+              <span class="number">{{ cart_count }}</span>
+            </a>
+            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
+          </div>
         </div>
-
-        <!-- Right Side -->
-        <div class="flex items-center gap-5">
-
-            <!-- Navigation -->
-            <a href="#" class="text-gray-700 hover:text-purple-600 transition">
-                Home
-            </a>
-
-            <a href="#" class="text-gray-700 hover:text-purple-600 transition">
-                Products
-            </a>
-
-            <!-- Cart -->
-            <a href="{% url 'cart' %}"
-                class="relative flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition">
-
-                <!-- Cart Icon -->
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-700" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
-
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1 5h12m-9 0a1 1 0 100 2 1 1 0 000-2zm8 0a1 1 0 100 2 1 1 0 000-2z" />
-                </svg>
-
-                <!-- Badge -->
-                <span
-                    class="absolute -top-1 -right-1 bg-purple-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center">
-                    3
-                </span>
-            </a>
-
-            <!-- Login -->
-            <a href="#" class="text-gray-700 hover:text-purple-600 transition font-medium">
-                Login
-            </a>
-
-            <!-- Register -->
-            <a href="#" class="bg-purple-600 hover:bg-purple-700 text-white px-5 py-2 rounded-xl transition shadow-sm">
-                Register
-            </a>
-
-        </div>
-
+      </div>
     </div>
-
-</nav>
