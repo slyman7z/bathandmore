@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Page</title>
+
+</head>
+
+<body>
+    <h1>This is a test page</h1>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {{ field }}
+            {% if field.errors %}
+            <div class="errors">
+                {{ field.errors }}
+            </div>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        <button type="submit" class="btn btn-primary">
+            Submit
+        </button>
+    </form>
+
+    <script>
+        // Get DOM elements
+        const stateSelect = document.getElementById('id_state');
+        const lgaSelect = document.getElementById('id_lga');
+
+        // Function to load LGAs based on selected state
+        function loadLgas() {
+            const stateId = stateSelect.value;
+
+            // Clear current LGA options
+            lgaSelect.innerHTML = '<option value="">---------</option>';
+
+            if (!stateId) {
+                return;
+            }
+
+            // Show loading state
+            lgaSelect.disabled = true;
+            lgaSelect.innerHTML = '<option value="">Loading...</option>';
+
+            // Make AJAX request
+            fetch(`/get-lgas/${stateId}/`)
+                .then(response => response.json())
+                .then(data => {
+                    lgaSelect.disabled = false;
+                    lgaSelect.innerHTML = '<option value="">---------</option>';
+
+                    data.forEach(lga => {
+                        const option = document.createElement('option');
+                        option.value = lga.id;
+                        option.textContent = lga.name;
+                        lgaSelect.appendChild(option);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error loading LGAs:', error);
+                    lgaSelect.disabled = false;
+                    lgaSelect.innerHTML = '<option value="">Error loading LGAs</option>';
+                });
+        }
+
+        // Add event listener to state dropdown
+        stateSelect.addEventListener('change', loadLgas);
+
+        // Load LGAs if state is pre-selected (e.g., when editing)
+        if (stateSelect.value) {
+            loadLgas();
+        }
+    </script>
+
+</body>
+
+</html>

@@ -9,6 +9,8 @@ from django.db.models import Q
 
 
 
+
+
 def store(request, category_slug=None):
     categories = None
 
@@ -40,10 +42,7 @@ def store(request, category_slug=None):
     return render(request, 'store.html', context)
 
 def product_detail(request, category_slug, product_slug):
-    color = request.GET.get('color')
-    return HttpResponse(color)
-    exit()
-
+    
     product = get_object_or_404(
         Product,
         category__slug=category_slug,
@@ -57,7 +56,6 @@ def product_detail(request, category_slug, product_slug):
     }
 
     return render(request, 'product_detail.html', context)
-
 
 def search(request):
     keyword = request.GET.get('q', '')

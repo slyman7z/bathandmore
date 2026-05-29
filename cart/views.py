@@ -14,7 +14,6 @@ def add_cart(request, product_id):
     
     cart, _ = Cart.objects.get_or_create(cart_id=_cart_id(request))
     
-    
     cart_item, created = CartItem.objects.get_or_create(
         product=product, 
         cart=cart,
@@ -27,12 +26,13 @@ def add_cart(request, product_id):
         cart_item.save()
     
     next_url = request.GET.get('next')
-    return redirect(next_url or 'cart')  
+    return redirect(next_url or 'cart') 
+ 
 
 def remove_cart_item(request, product_id):
     try:
         cart = Cart.objects.get(cart_id=_cart_id(request))
-        # Keep filter specific to active items if that matches your business logic
+        
         cart_item = CartItem.objects.filter(product_id=product_id, cart=cart).first()
 
         if cart_item:

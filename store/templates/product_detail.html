@@ -25,44 +25,18 @@
                     hic magni iste, velit aperiam quis.</p>
                 <p><strong class="text-primary h4">${{ product.price|floatformat:2 }}</strong></p>
 
-                <form method="get" action="{% url 'add_cart' product.id %}">
+                <form method="post" action="{% url 'add_cart' product.id %}">
                     {% csrf_token %}
 
-                <!-- Size Dropdown -->
-                <div class="mb-3 col-md-4">
-                    <label for="size" class="form-label text-black">Select Size</label>
-                    <select name="size" id="size" class="form-control">
-                        <option value="">Choose Size</option>
-                        <option value="S">Small</option>
-                        <option value="M">Medium</option>
-                        <option value="L">Large</option>
-                        <option value="XL">Extra Large</option>
-                    </select>
-                </div>
-
-                <!-- Color Dropdown -->
-                <div class="mb-3 col-md-4">
-                    <label for="color" class="form-label text-black">Select Color</label>
-                    <select name="color" id="color" class="form-control">
-                        <option value="">Choose Color</option>
-                        <option value="black">Black</option>
-                        <option value="white">White</option>
-                        <option value="red">Red</option>
-                        <option value="blue">Blue</option>
-                    </select>
-                </div>
-
-
-                {% if product.stock <= 0 %} <p class="text-danger">Out of Stock</p>
+                    {% if product.stock <= 0 %} 
+                    
+                    <p class="text-danger">Out of Stock</p>
 
                     {% else %}
-                    {% if in_cart %}
-                    <p class="text-success">Already in Cart</p>
-                    {% else %}
-                    <p><button type="button" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To
-                            Cart</button></p>
+
+                    <p><button type="submit" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</button></p>
                     {% endif %}
-                    {% endif %}
+                   
 
                 </form>
 

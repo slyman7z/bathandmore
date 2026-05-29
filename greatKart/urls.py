@@ -10,6 +10,10 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('store/', include('store.urls')),
     path('cart/', include('cart.urls')),
+    
+    # test urls
+    path('test/', views.test, name='test'),
+    path('get-lgas/<int:state_id>/', views.get_lgas, name='get_lgas'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
