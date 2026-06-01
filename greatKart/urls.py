@@ -10,6 +10,7 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('store/', include('store.urls')),
     path('cart/', include('cart.urls')),
+    path('accounts/', include('accounts.urls')),
     
     # test urls
     path('test/', views.test, name='test'),
