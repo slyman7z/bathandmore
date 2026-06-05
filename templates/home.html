@@ -62,6 +62,7 @@
                                                 <li><a href="#">Menu Three</a></li>
                                             </ul>
                                         </li>
+                                        
                                     </ul>
                                 </li>
 
@@ -69,6 +70,13 @@
                                 <li><a href="#">Catalogue</a></li>
                                 <li><a href="#">New Arrivals</a></li>
                                 <li><a href="contact.html">Contact</a></li>
+                                {% if user.is_authenticated %}
+                                    <li><a href="#">Dashboard</a></li>
+                                    <li><a href="{% url 'logout' %}">Logout</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'registration' %}">Register</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                {% endif %}
                             </ul>
                         </nav>
                     </div>

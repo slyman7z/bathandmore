@@ -11,46 +11,73 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="border p-4 rounded bg-white shadow-sm">
-                    
+
                     <h2 class="mb-4 text-center">Register</h2>
+                    {% include 'partials/alert.html' %}
 
                     <form method="post" action="{% url 'registration' %}">
                         {% csrf_token %}
                         <div class="form-group mb-3">
-                            <label for="first_name" class="form-label">First Name</label>
-                           {{form.first_name}}
+                            <label class="form-label">First Name</label>
+                            {{ form.first_name }}
+                            <div class="text-danger">
+                                {{ form.first_name.errors }}
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="last_name" class="form-label">Last Name</label>
-                            {{form.last_name}}
+                            <label class="form-label">Last Name</label>
+                            {{ form.last_name }}
+                            <div class="text-danger">
+                                {{ form.last_name.errors }}
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            {{form.username}}
+                            <label class="form-label">Username</label>
+                            {{ form.username }}
+                            <div class="text-danger">
+                                {{ form.username.errors }}
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="phone" class="form-label">Phone</label>
-                            {{form.phone}}
+                            <label class="form-label">Phone</label>
+                            {{ form.phone }}
+                            <div class="text-danger">
+                                {{ form.phone.errors }}
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="email" class="form-label">Email Address</label>
-                            {{form.email}}
+                            <label class="form-label">Email Address</label>
+                            {{ form.email }}
+                            <div class="text-danger">
+                                {{ form.email.errors }}
+                            </div>
                         </div>
 
                         <div class="form-group mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            {{form.password}}
+                            <label class="form-label">Password</label>
+                            {{ form.password }}
+                            <div class="text-danger">
+                                {{ form.password.errors }}
+                            </div>
                         </div>
 
                         <div class="form-group mb-4">
-                            <label for="password_confirm" class="form-label">Confirm Password</label>
-                            {{form.confirm_password}}
+                            <label class="form-label">Confirm Password</label>
+                            {{ form.confirm_password }}
+                            <div class="text-danger">
+                                {{ form.confirm_password.errors }}
+                            </div>
                         </div>
-                        {{form.non_field_errors}}
+
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger">
+                            {{ form.non_field_errors }}
+                        </div>
+                        {% endif %}
 
                         <button type="submit" class="btn btn-primary btn-block w-100">
                             Submit
